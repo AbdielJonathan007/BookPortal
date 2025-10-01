@@ -1,16 +1,19 @@
+version: "3"
 services:
   book-portal-be:
-    build: abdieljonathan007/book-portal-be:latest
+    build: ./book-portal-be
     container_name: "book-portal-be"
 
   book-portal-fe:
-    build: abdieljonathan007/book-portal-fe:latest
+    build: ./book-portal-fe
     container_name: "book-portal-fe"
     depends_on:
       - book-portal-be
+
   proxy:
-    build: abdieljonathan007/nginx:latest
+    build: ./nginx
     container_name: "book-portal-proxy"
     restart: always
     ports:
       - "80:80"
+
